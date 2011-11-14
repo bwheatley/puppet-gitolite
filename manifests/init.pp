@@ -3,12 +3,15 @@ class git(
   $site_name = '',
   $vhost     = ''
 ) {
-  include stdlib
   include git::params
 
-  anchor { 'git::begin': }
+  define anchor () {
+    # nothing but a class to bind to
+  }
+
+  git::anchor { 'git::begin': }
   -> class  { 'git::client': }
-  -> anchor { 'git::end': }
+  -> git::anchor { 'git::end': }
 
   if $server == 'true' {
     class { 'git::server':
