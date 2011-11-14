@@ -3,6 +3,8 @@ class git::server::config(
   $ssh_key,
   $vhost
 ) { 
+  include git::params
+
   File {
     owner => $git::params::gt_uid,
     group => $git::params::gt_gid,

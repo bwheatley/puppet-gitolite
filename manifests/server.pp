@@ -3,6 +3,7 @@ class git::server(
   $ssh_key,
   $vhost     = ''
 ) {
+  include git::params
   
   if $site_name == '' { $REAL_site_name = $git::params::gt_site_name } 
   else { $REAL_site_name = $site_name }
