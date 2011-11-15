@@ -2,7 +2,8 @@ class git::server::config(
   $site_name,
   $ssh_key,
   $vhost = '',
-  $apache_conf = ''
+  $apache_conf = '',
+  $gitolite_rc = ''
 ) { 
   include git::params
 
@@ -89,9 +90,16 @@ class git::server::config(
     mode    => '0600',
     require => Exec['install-gitolite'],
   }
+
+  if $gitolite_rc == '' {
+    $REAL_gitolite_rc = template('git/gitolite.rc.erb')
+  }
+  else {
+    $REAL_gitolite_rc = $gitolite_rc
+  }
   file { 'gitolite-config':
     path    => "${git::params::gt_repo_base}/.gitolite.rc",
-    content => template('git/gitolite.rc.erb'),
+    content => $REAL_gitolite_rc,
     before  => Exec['install-gitolite'],
   }
 }

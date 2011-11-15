@@ -2,7 +2,8 @@ class git::server(
   $site_name = '',
   $ssh_key,
   $vhost     = 'git',
-  $apache_conf = ''
+  $apache_conf = '',
+  $gitolite_rc = ''
 ) {
   include git::params
   
@@ -16,6 +17,7 @@ class git::server(
     ssh_key   => $ssh_key,
     vhost     => $vhost,
     apache_conf => $apache_conf,
+    gitolite_rc => $gitolite_rc,
   }
   -> git::anchor { 'git::server::end': }
 }
