@@ -1,6 +1,6 @@
 class git::params {
-  $gt_uid       = 'gitolite'
-  $gt_gid       = 'gitolite'
+  $gt_uid       = 'git'
+  $gt_gid       = 'git'
   $gt_repo_base = '/opt/git'
   $gt_repo_dir  = "${gt_repo_base}/repositories"
   $gt_site_name = "${::fqdn} Git Repository"
