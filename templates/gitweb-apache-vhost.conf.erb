@@ -4,7 +4,9 @@
 # ************************************
 
 <VirtualHost *:80>
+<% if vhost != 'git' %>
     ServerName <%= vhost %>
+<% end %>
     DocumentRoot "<%= scope.lookupvar('git::params::gt_gitweb_root') %>"
     DirectoryIndex <%= scope.lookupvar('git::params::gt_gitweb_binary') %>
     SetEnv  GITWEB_CONFIG   /etc/gitweb.conf

@@ -3,7 +3,6 @@ class git::params {
   $gt_gid       = 'gitolite'
   $gt_repo_base = '/opt/git'
   $gt_repo_dir  = "${gt_repo_base}/repositories"
-  $gt_vhost     = "git.${::domain}"
   $gt_site_name = "${::fqdn} Git Repository"
 
   case $::operatingsystem {
