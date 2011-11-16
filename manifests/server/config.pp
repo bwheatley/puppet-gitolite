@@ -27,6 +27,7 @@ class git::server::config(
   group { $git::params::gt_gid:
     ensure  => 'present',
     members => $git::params::gt_httpd_uid,
+    system  => true,
   }
   # Git Filesystem Repository Setup
   file { $git::params::gt_repo_base:
