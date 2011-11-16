@@ -22,6 +22,7 @@ class git::server::config(
     home    => $git::params::gt_repo_base,
     gid     => $git::params::gt_gid,
     comment => 'git repository hosting',
+    system  => true,
   }
   group { $git::params::gt_gid:
     ensure  => 'present',
